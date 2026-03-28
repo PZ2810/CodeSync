@@ -1,28 +1,28 @@
-import './App.css'
+import "./App.css"
+import Editor from "@monaco-editor/react" 
 
 function App() {
   
 
   return (
-    <><main className="h-screen w-full bg-gray-950 flex gap-4 p-4 items-center justify-center" >
-        {/* <form
-          onSubmit={handleJoin}
-          className="flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="Enter your username"
-            className="p-2 rounded-lg bg-gray-800 text-white"
-            name="username"
-          />
-          <button
-            className="p-2 rounded-lg bg-amber-50 text-gray-950 font-bold"
-          >
-            Join
-          </button>
-        </form> */}
-      </main>
+    <main className="h-screen w-full bg-gray-950 flex gap-4 p-4">
+
+      <aside className="h-screen w-1/4 bg-amber-50 rounded-lg"></aside>
+
+      <section
+        className="w-3/4 bg-neutral-800 rounded-lg">
+       <Editor
+          height="100%"
+          defaultLanguage="javascript"
+          defaultValue="// some comment"
+          theme="vs-dark"
+       
+        />
+      </section>
+    </main>
+
       
-    </>
+  
   )
 }
 
