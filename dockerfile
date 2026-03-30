@@ -1,7 +1,25 @@
-FROM node:20-alpine AS frontend-builder
+#Build the frontend [dist folder]
+#Copy the dist folder content in Backend/public folder
 
-COPY ./Backend .
+FROM node:20-alpine as frontend-builder
+
+COPY ./Frontend /app
+
+WORKDIR /app
 
 RUN npm install
 
-CMD ["node","server.js"]
+RUN npm run build
+
+#Build the backend
+FROM node:20-alpine 
+
+COPY ./Backend /app
+
+WORKDIR /app
+
+RUN npm install
+
+COPY --from=frontend-builder /app/dist /app/public
+
+CMD ["node", "server.js"]
